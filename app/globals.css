@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 @theme inline {
@@ -14,13 +14,96 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #090d16;
+    --foreground: #f1f5f9;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom Sleek Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.35);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.6);
+}
+
+/* Leaflet Custom Overrides */
+.custom-leaflet-pin {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-gis-popup .leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.96) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(16, 185, 129, 0.3) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  color: #f8fafc !important;
+}
+
+.custom-gis-popup .leaflet-popup-content {
+  margin: 0 !important;
+  line-height: normal !important;
+}
+
+.leaflet-popup-content p,
+.custom-gis-popup .leaflet-popup-content p {
+  margin: 4px 0 !important;
+}
+
+.custom-gis-popup .leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.96) !important;
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.3) !important;
+}
+
+.custom-gis-popup a.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+  padding: 10px 10px 0 0 !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.custom-gis-popup a.leaflet-popup-close-button:hover {
+  color: #ffffff !important;
+}
+
+/* Leaflet Container Fixes */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: inherit;
+}
+
+/* Glowing animation for active plantation boundary and circular dot */
+.selected-estate-polygon {
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.85));
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: all 0.3s ease;
+}
+
+.estate-circle-marker {
+  filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.9));
+  transition: all 0.3s ease;
 }
